@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload or Type Your Dox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c0c0c;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #continue-button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #continue-button:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .form-container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        #upload-button {
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .list-container {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.2em;
+            margin: 10px 0;
+            display: none; /* Initially hide all doxxes */
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .username-display {
+            color: #00ff00;
+            font-size: 1.2em;
+            margin: 10px 0;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .edit-button {
+            background-color: #ff6600;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        audio {
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button id="continue-button">Continue To Dox Fags</button>
+
+        <div class="form-container" style="display: none;">
+            <form method="POST" action="/dox" enctype="multipart/form-data">
+                <input type="text" id="dox-name" name="name" placeholder="Enter a name for your dox..." required>
+                <br>
+                <textarea id="dox-content" name="text" rows="6" cols="50" placeholder="Type your Dox content here..."
+                    required></textarea>
+                <br>
+                <input type="file" name="file" id="file">
+                <br>
+                <button id="upload-button" type="submit">Upload/Submit Dox</button>
+            </form>
+        </div>
+
+        <div class="list-container" style="display: none;">
+            <audio id="audio-player" controls autoplay muted>
+                <!-- Update the source path to your song file -->
+                <source src="{{ url_for('play_song') }}" type="audio/mpeg">
+                Your browser does not support it. Get Edge or Chrome!
+            </audio>
+
+            <div class="list-container">
+                <h1>List of Doxxes</h1>
+                <input type="text" id="search-input" placeholder="Search by name..." oninput="searchDox()">
+                <ul id="dox-list">
+                    {% for dox in doxes %}
+                    <li>
+                        <a href="{{ url_for('serve_dox', unique_id=dox[:8], filename=dox) }}">{{ dox }}</a>
+                        {% if is_owner %}
+                        <button class="edit-button" onclick="editDox('{{ dox[:8] }}', '{{ dox }}')">Edit</button>
+                        <button class="delete-button" onclick="deleteDox('{{ dox }}')">Delete</button>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function searchDox() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const doxList = document.getElementById('dox-list');
+            const doxxes = document.querySelectorAll('#dox-list li');
+
+            doxxes.forEach(dox => {
+                const doxName = dox.textContent.toLowerCase();
+                if (doxName.includes(searchInput)) {
+                    dox.style.display = 'block';
+                } else {
+                    dox.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioPlayer = document.getElementById('audio-player');
+            const continueButton = document.getElementById('continue-button');
+            const formContainer = document.querySelector('.form-container');
+            const listContainer = document.querySelector('.list-container');
+
+            continueButton.addEventListener('click', function() {
+                continueButton.style.display = 'none';
+                formContainer.style.display = 'block';
+                listContainer.style.display = 'block';
+            });
+
+            // Initial display of doxxes
+            const doxList = document.getElementById('dox-list');
+            const initialDoxxes = Array.from(doxList.children);
+            initialDoxxes.forEach(dox => {
+                dox.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti DDoS Protection</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <script>
+        // Function to check if the visitor is a bot based on user agent
+        function isBot() {
+            const botUserAgents = ["bot", "crawler", "spider", "googlebot", "bingbot", "ddos", "wget", "curl", "python-requests"];
+            const userAgent = navigator.userAgent.toLowerCase();
+
+            return botUserAgents.some(botAgent => userAgent.includes(botAgent));
+        }
+
+        // Function to handle access after bot check
+        function handleAccess() {
+            if (isBot()) {
+                alert("Bot or DDoS-related user agent detected. Access denied.");
+            } else {
+                // Redirect to /dox after a 2-second delay for non-bots
+                setTimeout(() => {
+                    window.location.href = '/dox';
+                }, 1000); // 2 seconds delay
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the visitor is a bot and handle access accordingly
+            handleAccess();
+        });
+    </script>
+</body>
+</html>

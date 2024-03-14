@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hall of autism</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Style for the bleeding particle */
+        .goofy-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-bleed 0.8s linear forwards, particle-move 5s linear infinite, particle-rotate 4s linear infinite;
+            background-color: #800080; /* Red color */
+            opacity: 0.6; /* Lower opacity for a "bleeding" effect */
+        }
+
+        @keyframes particle-bleed {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particle-move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        @keyframes particle-rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        /* Style for hyperlinks */
+        a {
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen">
+                <h1>Welcum nigguz</h1>
+                <p>
+                    <a href="https://cdn.discordapp.com/attachments/1131379697616420914/1145451849458126958/image.png">idiot 1</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1143672719171391640/IMG_1481.png">idiot 2</a>
+                    <a href="https://cdn.discordapp.com/attachments/1131392250698547263/1145510745178640516/image.png">idiot 3</a>
+                    <a href="https://szkwshit.iforgottttt1z.repl.co/dox/e994483a/vitamin%20idiot_3037095565.txt">idiot 4</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1145512481440141432/KliONgh.png">idiot 5</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1145512481750536312/o2jtIVQ.png">idiot 6</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1145512482115424448/H13UfsL.png">idiot 7</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1145512482371293272/QGVjXcv.png">idiot 8</a>
+                    <a href="https://cdn.discordapp.com/attachments/1128993752246145036/1145512482618736801/9ve7bdY.png">idiot 9</a>
+                                      <a href="https://cdn.discordapp.com/attachments/1149930084875112478/1150559877022875738/Screenshot_20230903_212621_Discord.jpg">idiot 10</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.className = 'goofy-particle';
+            document.body.appendChild(particle);
+
+            const x = e.clientX;
+            const y = e.clientY;
+
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        });
+    </script>
+</body>
+</html>

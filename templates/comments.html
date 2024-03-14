@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Dark background color */
+            color: #fff; /* White text color */
+        }
+
+        .comments-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #444; /* Darker border color */
+            border-radius: 5px;
+        }
+
+        .comment-text {
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .comment-timestamp {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Comment input form styles */
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .submit-button {
+            background-color: #000; /* Dark background color */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        /* Go Back button styles */
+        .go-back-button {
+            display: inline-block;
+            background-color: #555; /* Dark gray background color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .go-back-button:hover {
+            background-color: #777; /* Slightly lighter gray on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comments-container">
+        <h1>Comments</h1>
+        <div class="comment-form">
+            <h2>Add a Comment</h2>
+            <form method="POST" action="/dox/{{ unique_id }}/{{ filename }}/comments">
+                <textarea class="comment-input" name="comment_text" placeholder="Type your comment here..." rows="4"
+                    required></textarea>
+                <br>
+                <button class="submit-button" type="submit">Submit Comment</button>
+            </form>
+        </div>
+        <div class="comments-list">
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p class="comment-text">{{ comment['text']|safe }}</p>
+                        <p class="comment-author">Comment by: {{ comment['username']|e }}</p> <!-- Escape username -->
+                        <p class="comment-timestamp">Timestamp: {{ comment['timestamp']|e }}</p> <!-- Escape timestamp -->
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No comments yet.</p>
+            {% endif %}
+        </div>
+
+        <!-- "Go Back" button -->
+        <a href="https://szkwshit.iforgottttt1z.repl.co" class="go-back-button">Go Back</a>
+    </div>
+</body>
+
+</html>

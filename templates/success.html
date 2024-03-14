@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dox Uploaded Successfully</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00; /* Text color is green */
+            text-align: center;
+            font-size: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif; /* Use a more common font */
+        }
+        a {
+            color: #00FF00; /* Link color is green */
+            text-decoration: none; /* Remove underlines from links */
+        }
+        button {
+            background-color: #FFF; /* Button background color is white */
+            color: #000; /* Button text color is black */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #000; /* Change button background color on hover */
+            color: #FFF; /* Change button text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dox Uploaded Successfully!</h1>
+    <button onclick="window.location.href='/'">Go Back</button> <!-- Button for manual redirection -->
+    <button onclick="window.location.href='{{ file_url }}'">Go to Your Dox</button>
+</body>
+</html>

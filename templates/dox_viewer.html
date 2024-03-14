@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dox Viewer</title>
+    <style>
+        body {
+            font-family: 'Hack', monospace;
+            background-color: #000;
+            color: #ddd;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dox-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .dox-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ff4500; /* Dark orange-red color */
+        }
+
+        .dox-content {
+            font-size: 18px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            overflow: auto;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #ddd;
+            border-radius: 5px;
+        }
+
+        .view-comments-button {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .view-comments-button:hover {
+            background-color: #cc3700; /* Darker shade of orange-red */
+        }
+
+        .go-back-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .go-back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dox-container">
+        <!-- Display the dox title and content -->
+        <h1 class="dox-title">{{ dox_title|e }}</h1>
+        <div class="dox-content">{{ dox_content|safe }}</div>
+
+        <!-- Link to view comments -->
+        <div class="comment-form">
+            <a class="view-comments-button" href="/dox/{{ unique_id|e }}/{{ filename|e }}/comments">View Comments</a>
+        </div>
+        <!-- "Go Back" button -->
+        <a href="http://127.0.0.1:8080/dox" class="go-back-button">Go Back</a>
+    </div>
+
+</body>
+
+</html>

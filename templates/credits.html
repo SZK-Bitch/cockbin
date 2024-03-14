@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credits</title>
+    <style>
+        /* Resetting default margin and padding for all elements */
+        body, h1, ul, li, a {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #1a1a1a; /* Dark gray background color for the entire page */
+            color: #fff; /* White text color for readability */
+            font-family: "Arial", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #292929; /* Dark grey background for the text box */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px; /* Slightly rounded corners */
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #fff; /* White heading color */
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            line-height: 1.4; /* Adjust line height for better readability */
+        }
+
+        a {
+            color: #00aeef; /* Blue link color similar to Doxbin */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: block;
+            margin-top: 20px;
+            background-color: #00aeef; /* Blue button background similar to Doxbin */
+            color: #fff; /* White button text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px; /* Slightly rounded corners */
+            font-size: 1.2em;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0092d6; /* Darker blue on hover similar to Doxbin */
+        }
+
+              .goofy-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-bleed 0.8s linear forwards, particle-move 5s linear infinite, particle-rotate 4s linear infinite;
+            background-color: #800080; /* Red color */
+            opacity: 0.6; /* Lower opacity for a "bleeding" effect */
+        }
+
+        @keyframes particle-bleed {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes particle-move {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        @keyframes particle-rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Credits</h1>
+        
+        <h2>dev shit</h2>
+        <ul>
+            <li><a href="https://doxbin.com/user/SZK" target="_blank">SZK</a></li>
+            <li><a href="https://doxbin.com/user/bduber274" target="_blank">Cliqes</a></li>
+        </ul>
+        
+        <h2>anyone else claiming to be us</h2>
+        <ul>
+            <li>are fucking skids</li>
+        </ul>
+        
+        <h2>szk x general</h2>
+        <p>fuck skids</p>
+        
+        <h2>doxbin shit</h2>
+        <p>Check out our Doxbin profiles:</p>
+        <ul>
+            <li><a href="https://doxbin.com/user/general5555
+" target="_blank">general's Doxbin Profile</a></li>
+            <li><a href="https://doxbin.com/user/SZK" target="_blank">szk's Doxbin Profile</a></li>
+        </ul>
+        
+        <!-- Discord Invite Link -->
+        <h2>Join Our Discord</h2>
+        <p>szk x general</p>
+        <a class="back-button" href="https://discord.gg/9Q7bW3VJWa" target="_blank">Join Our Discord</a>
+        
+        <!-- Back to Main Page Button -->
+        <a class="back-button" href="https://szkwshit.iforgottttt1z.repl.co">Back to Main Page</a>
+
+          <script>
+        document.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.className = 'goofy-particle';
+            document.body.appendChild(particle);
+
+            const x = e.clientX;
+            const y = e.clientY;
+
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        });
+    </script>
+</body>
+    </div>
+</body>
+</html>
+
+
